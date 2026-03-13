@@ -29,9 +29,7 @@ class ScalrClient:
     ) -> dict[str, Any]:
         url = f"{self.api_url}/{endpoint.lstrip('/')}"
         async with self.rate_limiter:
-            response = await self.client.request(
-                method=method, url=url, params=params
-            )
+            response = await self.client.request(method=method, url=url, params=params)
             response.raise_for_status()
             return response.json()
 

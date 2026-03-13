@@ -27,7 +27,9 @@ async def resync_runs(kind: str) -> ASYNC_GENERATOR_RESYNC_TYPE:
     async for workspaces in scalr_client.get_workspaces():
         for workspace in workspaces:
             async for runs in scalr_client.get_runs_for_workspace(workspace["id"]):
-                logger.info(f"Received {len(runs)} {kind}s for workspace {workspace['id']}")
+                logger.info(
+                    f"Received {len(runs)} {kind}s for workspace {workspace['id']}"
+                )
                 yield runs
 
 
