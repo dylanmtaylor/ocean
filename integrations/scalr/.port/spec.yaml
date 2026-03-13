@@ -1,0 +1,21 @@
+title: Scalr
+description: Scalr integration for Port Ocean
+icon: Terraform
+features:
+  - type: exporter
+    section: IaC
+    resources:
+      - kind: environment
+      - kind: workspace
+      - kind: run
+      - kind: module
+configurations:
+  - name: scalrBaseUrl
+    required: true
+    type: string
+    description: The hostname of your Scalr account (e.g. example.scalr.io). Do not include the https:// prefix.
+  - name: scalrToken
+    type: string
+    required: true
+    sensitive: true
+    description: Scalr API token. To create an API token, see the <a target="_blank" href="https://docs.scalr.io/docs/creating-api-tokens">Scalr Documentation</a>

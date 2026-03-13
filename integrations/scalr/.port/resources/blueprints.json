@@ -1,0 +1,167 @@
+[
+  {
+    "identifier": "scalrEnvironment",
+    "description": "This blueprint represents an environment in Scalr",
+    "title": "Scalr Environment",
+    "icon": "Terraform",
+    "schema": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "The name of the environment"
+        },
+        "status": {
+          "type": "string",
+          "title": "Status",
+          "description": "The status of the environment"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Created At",
+          "description": "When the environment was created"
+        }
+      }
+    },
+    "mirrorProperties": {},
+    "calculationProperties": {},
+    "aggregationProperties": {},
+    "relations": {}
+  },
+  {
+    "identifier": "scalrWorkspace",
+    "description": "This blueprint represents a workspace in Scalr",
+    "title": "Scalr Workspace",
+    "icon": "Terraform",
+    "schema": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "The name of the workspace"
+        },
+        "status": {
+          "type": "string",
+          "title": "Status",
+          "description": "The current status of the workspace"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Created At",
+          "description": "When the workspace was created"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Updated At",
+          "description": "When the workspace was last updated"
+        },
+        "terraformVersion": {
+          "type": "string",
+          "title": "Terraform Version",
+          "description": "The Terraform version used by this workspace"
+        },
+        "autoApply": {
+          "type": "boolean",
+          "title": "Auto Apply",
+          "description": "Whether runs are automatically applied"
+        }
+      }
+    },
+    "mirrorProperties": {},
+    "calculationProperties": {},
+    "aggregationProperties": {},
+    "relations": {
+      "environment": {
+        "title": "Scalr Environment",
+        "target": "scalrEnvironment",
+        "required": false,
+        "many": false
+      }
+    }
+  },
+  {
+    "identifier": "scalrRun",
+    "description": "This blueprint represents a run in Scalr",
+    "title": "Scalr Run",
+    "icon": "Terraform",
+    "schema": {
+      "properties": {
+        "status": {
+          "type": "string",
+          "title": "Status",
+          "description": "The current status of the run"
+        },
+        "source": {
+          "type": "string",
+          "title": "Source",
+          "description": "The source that triggered the run"
+        },
+        "message": {
+          "type": "string",
+          "title": "Message",
+          "description": "Message associated with the run"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Created At",
+          "description": "When the run was created"
+        },
+        "isDestroy": {
+          "type": "boolean",
+          "title": "Is Destroy",
+          "description": "Whether this is a destroy run"
+        }
+      }
+    },
+    "mirrorProperties": {},
+    "calculationProperties": {},
+    "aggregationProperties": {},
+    "relations": {
+      "workspace": {
+        "title": "Scalr Workspace",
+        "target": "scalrWorkspace",
+        "required": false,
+        "many": false
+      }
+    }
+  },
+  {
+    "identifier": "scalrModule",
+    "description": "This blueprint represents a module in Scalr",
+    "title": "Scalr Module",
+    "icon": "Terraform",
+    "schema": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Name",
+          "description": "The name of the module"
+        },
+        "status": {
+          "type": "string",
+          "title": "Status",
+          "description": "The status of the module"
+        },
+        "source": {
+          "type": "string",
+          "title": "Source",
+          "description": "The source of the module"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Created At",
+          "description": "When the module was created"
+        }
+      }
+    },
+    "mirrorProperties": {},
+    "calculationProperties": {},
+    "aggregationProperties": {},
+    "relations": {}
+  }
+]

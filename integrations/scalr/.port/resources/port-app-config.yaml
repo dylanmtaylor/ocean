@@ -1,0 +1,65 @@
+createMissingRelatedEntities: true
+deleteDependentEntities: true
+resources:
+  - kind: environment
+    selector:
+      query: "true"
+    port:
+      entity:
+        mappings:
+          identifier: .id
+          title: .attributes.name
+          blueprint: '"scalrEnvironment"'
+          properties:
+            name: .attributes.name
+            status: .attributes.status
+            createdAt: .attributes."created-at"
+  - kind: workspace
+    selector:
+      query: "true"
+    port:
+      entity:
+        mappings:
+          identifier: .id
+          title: .attributes.name
+          blueprint: '"scalrWorkspace"'
+          properties:
+            name: .attributes.name
+            status: .attributes.status
+            createdAt: .attributes."created-at"
+            updatedAt: .attributes."updated-at"
+            terraformVersion: .attributes."terraform-version"
+            autoApply: .attributes."auto-apply"
+          relations:
+            environment: .relationships.environment.data.id
+  - kind: run
+    selector:
+      query: "true"
+    port:
+      entity:
+        mappings:
+          identifier: .id
+          title: .id
+          blueprint: '"scalrRun"'
+          properties:
+            status: .attributes.status
+            source: .attributes.source
+            message: .attributes.message
+            createdAt: .attributes."created-at"
+            isDestroy: .attributes."is-destroy"
+          relations:
+            workspace: .relationships.workspace.data.id
+  - kind: module
+    selector:
+      query: "true"
+    port:
+      entity:
+        mappings:
+          identifier: .id
+          title: .attributes.name
+          blueprint: '"scalrModule"'
+          properties:
+            name: .attributes.name
+            status: .attributes.status
+            source: .attributes.source
+            createdAt: .attributes."created-at"

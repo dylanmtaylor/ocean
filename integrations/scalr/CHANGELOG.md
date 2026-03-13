@@ -1,0 +1,1 @@
+# Scalr Integration Changelog
